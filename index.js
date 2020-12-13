@@ -4,7 +4,7 @@ var path = require("path");
 var fs=require('fs');
 const express=require('express');
 const app=express();
-
+var port = process.env.PORT || 3001;
 
 app.get('/createFile',(req,res)=>{
   var date=new Date();
@@ -13,7 +13,7 @@ fs.writeFile(`./createdFiles/${date}.txt`, "Hello", (err) => {
   res.status(200).json({message:'File Created'})
 });
 })
-app.listen(3001);
+app.listen(port,()=>console.log(port));
 app.get("/files",(req,res)=>{
     fs.opendir("./createdFiles", async (err, dir) => {
       if (err) throw err;
