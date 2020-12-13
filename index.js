@@ -5,7 +5,7 @@ var fs=require('fs');
 const express=require('express');
 const app=express();
 var port = process.env.PORT || 3001;
-
+require("dotenv").config();
 app.get('/createFile',(req,res)=>{
   var date=new Date();
 fs.writeFile(`./createdFiles/${date}.txt`, "Hello", (err) => {
